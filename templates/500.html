@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4 md:px-6">
+    <section class="py-16 md:py-24 flex flex-col items-center justify-center text-center">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-heading-xl font-bold text-accent mb-6 animate-fade-in">500</h1>
+            <h2 class="text-heading-md font-bold text-text-primary mb-6 animate-slide-up">Server Error</h2>
+            <p class="text-text-secondary text-body-lg mb-8 animate-slide-up-delay-1">
+                Something went wrong on our server. We're working to fix the issue.
+            </p>
+            <div class="animate-slide-up-delay-2">
+                <a href="/" class="btn btn-primary hover-target">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Animate the 500 number with a glitch effect
+        const errorNumber = document.querySelector('h1');
+        
+        if (errorNumber) {
+            // Create glitch animation
+            setInterval(() => {
+                errorNumber.style.textShadow = `
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px rgba(0, 102, 255, 0.3),
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px rgba(139, 92, 246, 0.3)
+                `;
+                
+                // Occasionally add a stronger glitch
+                if (Math.random() > 0.9) {
+                    errorNumber.style.transform = `translateX(${Math.random() * 10 - 5}px)`;
+                    setTimeout(() => {
+                        errorNumber.style.transform = 'translateX(0)';
+                    }, 100);
+                }
+            }, 500);
+        }
+    });
+</script>
+{% endblock %}
