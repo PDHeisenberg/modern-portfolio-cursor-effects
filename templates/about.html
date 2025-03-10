@@ -1,187 +1,240 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<section class="py-16 md:py-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="order-2 md:order-1">
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-dark mb-6 reveal-text">
-                About Me
-            </h1>
-            <p class="text-lg text-dark-light mb-6 reveal-text-delay">
-                I'm a passionate developer and designer with a focus on creating beautiful, functional digital experiences. With a background in both design and development, I bring a unique perspective to every project.
-            </p>
-            <p class="text-lg text-dark-light mb-6 reveal-text-delay">
-                My journey began with a fascination for how design and technology intersect to create meaningful user experiences. Today, I specialize in building modern websites and applications that not only look great but also perform exceptionally well.
-            </p>
-            <p class="text-lg text-dark-light mb-8 reveal-text-delay">
-                When I'm not coding or designing, you can find me exploring new technologies, contributing to open-source projects, or enjoying the outdoors.
-            </p>
-            <div class="flex flex-wrap gap-4 reveal-buttons">
-                <a href="/contact" class="btn btn-primary text-white px-8 py-3 rounded-lg hover-target">
-                    Get in Touch
-                </a>
-                <a href="/projects" class="btn btn-outline border-2 border-dark text-dark px-8 py-3 rounded-lg hover-target">
-                    View My Work
-                </a>
+<div class="container mx-auto px-4 md:px-6">
+    <!-- About Hero Section -->
+    <section class="py-16 md:py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div data-animate="slide-up">
+                <h1 class="text-heading-lg md:text-heading-xl font-bold mb-6">
+                    About Me
+                </h1>
+                <p class="text-text-secondary text-body-lg mb-6">
+                    I'm Parth Dhawan, a developer and designer with a passion for creating beautiful, functional digital experiences. With a background in both design and development, I bring a unique perspective to every project.
+                </p>
+                <p class="text-text-secondary text-body-lg mb-8">
+                    My journey began with a fascination for how design and technology intersect to create meaningful user experiences. Today, I specialize in building modern websites and applications that not only look great but also perform exceptionally well.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="/contact" class="btn btn-primary hover-target">
+                        Get in Touch
+                    </a>
+                    <a href="/projects" class="btn btn-outline hover-target">
+                        View My Work
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="order-1 md:order-2 reveal-image">
-            <div class="relative">
-                <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full animate-pulse-slow"></div>
-                <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-secondary/10 rounded-full animate-pulse-slow"></div>
-                <div class="relative z-10 bg-light-accent p-4 rounded-2xl shadow-sm">
-                    <img src="{{ url_for('static', filename='img/about-image.jpg') }}" alt="Portrait photo" class="rounded-xl w-full h-auto">
+            <div class="relative" data-animate="fade-in">
+                <div class="absolute -top-6 -left-6 w-24 h-24 bg-accent/10 rounded-full animate-pulse-slow"></div>
+                <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-accent/10 rounded-full animate-pulse-slow"></div>
+                <div class="relative z-10 bg-hover-bg p-4 rounded-2xl">
+                    <img src="{{ url_for('static', filename='img/about-image.jpg') }}" alt="Parth Dhawan" class="rounded-xl w-full h-auto">
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="py-16 bg-light-accent rounded-3xl my-16">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4 reveal-text">My Skills</h2>
-        <p class="text-dark-light max-w-2xl mx-auto reveal-text-delay">Technologies and tools I work with to bring ideas to life.</p>
-    </div>
-    
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-            </div>
-            <h3 class="text-lg font-display font-semibold text-dark">HTML/CSS</h3>
-        </div>
+    <!-- Skills Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <h2 class="text-heading-md font-bold mb-12">My Skills</h2>
         
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-animate="stagger-children">
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">HTML/CSS</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">JavaScript</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">JavaScript</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">React</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">React</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">Python</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">Python</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">UI/UX Design</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                </svg>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">UI/UX Design</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">Databases</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">Databases</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">TailwindCSS</h3>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-sm text-center hover-card hover-target">
-            <div class="text-primary mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">TailwindCSS</h3>
             </div>
-            <h3 class="text-lg font-display font-semibold text-dark">Animations</h3>
+            
+            <div class="card card-hover p-6 text-center">
+                <div class="text-accent mb-4 flex justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="font-medium">Animations</h3>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="py-16">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4 reveal-text">My Journey</h2>
-        <p class="text-dark-light max-w-2xl mx-auto reveal-text-delay">A brief timeline of my professional experience.</p>
-    </div>
-    
-    <div class="max-w-3xl mx-auto">
-        <div class="relative">
-            <!-- Timeline line -->
-            <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-primary/20 transform md:translate-x-px"></div>
-            
-            <!-- Timeline items -->
-            <div class="timeline-item mb-12 md:mb-16 relative">
-                <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover-card hover-target">
-                        <h3 class="text-xl font-display font-semibold text-dark mb-2">Senior Developer</h3>
-                        <p class="text-primary font-medium mb-2">2022 - Present</p>
-                        <p class="text-dark-light">Leading development of modern web applications with a focus on performance and user experience.</p>
-                    </div>
+    <!-- Experience Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <h2 class="text-heading-md font-bold mb-12">My Experience</h2>
+        
+        <div class="space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start" data-animate="slide-up">
+                <div class="md:col-span-1">
+                    <span class="text-accent font-medium">2022 - Present</span>
                 </div>
-                <div class="md:absolute md:top-0 md:right-0 md:w-1/2 md:pl-12">
-                    <!-- Empty for alignment -->
+                <div class="md:col-span-3">
+                    <h3 class="text-lg font-medium mb-2">Senior Developer</h3>
+                    <p class="text-text-secondary mb-4">TechInnovate Inc.</p>
+                    <p class="text-text-secondary">Leading development of modern web applications with a focus on performance and user experience. Collaborating with cross-functional teams to deliver high-quality products.</p>
                 </div>
-                <div class="absolute top-6 left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2"></div>
             </div>
             
-            <div class="timeline-item mb-12 md:mb-16 relative">
-                <div class="md:absolute md:top-0 md:left-0 md:w-1/2 md:pr-12 md:text-right">
-                    <!-- Empty for alignment -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start" data-animate="slide-up">
+                <div class="md:col-span-1">
+                    <span class="text-accent font-medium">2019 - 2022</span>
                 </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover-card hover-target">
-                        <h3 class="text-xl font-display font-semibold text-dark mb-2">Frontend Developer</h3>
-                        <p class="text-primary font-medium mb-2">2019 - 2022</p>
-                        <p class="text-dark-light">Developed responsive websites and applications using modern JavaScript frameworks.</p>
-                    </div>
+                <div class="md:col-span-3">
+                    <h3 class="text-lg font-medium mb-2">Frontend Developer</h3>
+                    <p class="text-text-secondary mb-4">WebSolutions Co.</p>
+                    <p class="text-text-secondary">Developed responsive websites and applications using modern JavaScript frameworks. Implemented UI/UX designs and optimized performance for various devices.</p>
                 </div>
-                <div class="absolute top-6 left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2"></div>
             </div>
             
-            <div class="timeline-item relative">
-                <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover-card hover-target">
-                        <h3 class="text-xl font-display font-semibold text-dark mb-2">UI/UX Designer</h3>
-                        <p class="text-primary font-medium mb-2">2017 - 2019</p>
-                        <p class="text-dark-light">Designed user interfaces and experiences for web and mobile applications.</p>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start" data-animate="slide-up">
+                <div class="md:col-span-1">
+                    <span class="text-accent font-medium">2017 - 2019</span>
                 </div>
-                <div class="md:absolute md:top-0 md:right-0 md:w-1/2 md:pl-12">
-                    <!-- Empty for alignment -->
+                <div class="md:col-span-3">
+                    <h3 class="text-lg font-medium mb-2">UI/UX Designer</h3>
+                    <p class="text-text-secondary mb-4">DesignCraft Studio</p>
+                    <p class="text-text-secondary">Designed user interfaces and experiences for web and mobile applications. Created wireframes, prototypes, and visual designs for various clients.</p>
                 </div>
-                <div class="absolute top-6 left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2"></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <h2 class="text-heading-md font-bold mb-12">Education</h2>
+        
+        <div class="space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start" data-animate="slide-up">
+                <div class="md:col-span-1">
+                    <span class="text-accent font-medium">2015 - 2019</span>
+                </div>
+                <div class="md:col-span-3">
+                    <h3 class="text-lg font-medium mb-2">Bachelor of Science in Computer Science</h3>
+                    <p class="text-text-secondary mb-4">University of Technology</p>
+                    <p class="text-text-secondary">Focused on web development, user interface design, and software engineering. Graduated with honors.</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start" data-animate="slide-up">
+                <div class="md:col-span-1">
+                    <span class="text-accent font-medium">2020</span>
+                </div>
+                <div class="md:col-span-3">
+                    <h3 class="text-lg font-medium mb-2">UI/UX Design Certification</h3>
+                    <p class="text-text-secondary mb-4">Design Academy</p>
+                    <p class="text-text-secondary">Intensive program covering user research, wireframing, prototyping, and visual design principles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Interests Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <h2 class="text-heading-md font-bold mb-12">Beyond Work</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-animate="stagger-children">
+            <div class="card card-hover p-6">
+                <div class="text-accent mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium mb-2">Open Source</h3>
+                <p class="text-text-secondary">I actively contribute to open-source projects and maintain several of my own libraries and tools.</p>
+            </div>
+            
+            <div class="card card-hover p-6">
+                <div class="text-accent mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium mb-2">Learning</h3>
+                <p class="text-text-secondary">I'm constantly learning new technologies and techniques to stay at the forefront of web development.</p>
+            </div>
+            
+            <div class="card card-hover p-6">
+                <div class="text-accent mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium mb-2">Travel</h3>
+                <p class="text-text-secondary">I love exploring new places and drawing inspiration from different cultures and environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <div class="text-center max-w-3xl mx-auto">
+            <h2 class="text-heading-md font-bold mb-6">Let's Connect</h2>
+            <p class="text-text-secondary text-body-lg mb-8">Interested in working together or just want to say hello? I'd love to hear from you.</p>
+            <a href="/contact" class="btn btn-primary hover-target">Get in Touch</a>
+        </div>
+    </section>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // Additional page-specific animations
     document.addEventListener('DOMContentLoaded', () => {
         // Animate timeline items on scroll
-        const timelineItems = document.querySelectorAll('.timeline-item');
+        const experienceItems = document.querySelectorAll('.space-y-12 > div');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -189,36 +242,22 @@
                     entry.target.classList.add('animated');
                     observer.unobserve(entry.target);
                     
-                    // Animate the timeline dot
-                    const dot = entry.target.querySelector('.absolute.top-6');
-                    if (dot) {
-                        anime({
-                            targets: dot,
-                            scale: [0, 1],
-                            opacity: [0, 1],
-                            duration: 600,
-                            easing: 'easeOutExpo'
-                        });
-                    }
+                    anime({
+                        targets: entry.target,
+                        opacity: [0, 1],
+                        translateY: [20, 0],
+                        easing: 'cubicBezier(0.19, 1, 0.22, 1)',
+                        duration: 800,
+                        delay: 100
+                    });
                 }
             });
         }, {
             threshold: 0.2
         });
         
-        timelineItems.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        experienceItems.forEach(item => {
             observer.observe(item);
-        });
-        
-        // When item becomes visible
-        document.addEventListener('animationstart', (e) => {
-            if (e.target.classList.contains('timeline-item') && e.target.classList.contains('animated')) {
-                e.target.style.opacity = '1';
-                e.target.style.transform = 'translateY(0)';
-            }
         });
     });
 </script>
