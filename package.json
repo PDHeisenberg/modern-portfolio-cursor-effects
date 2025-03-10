@@ -1,0 +1,30 @@
+{
+  "name": "modern-portfolio-cursor-effects",
+  "version": "1.0.0",
+  "description": "A modern portfolio website with custom cursor effects, inspired by Parth Dhawan's design",
+  "main": "index.js",
+  "scripts": {
+    "start": "python main.py",
+    "build": "tailwindcss build -i src/css/tailwind.css -o static/css/style.css",
+    "watch": "tailwindcss build -i src/css/tailwind.css -o static/css/style.css --watch"
+  },
+  "keywords": [
+    "portfolio",
+    "cursor-effects",
+    "light-mode",
+    "tailwindcss",
+    "daisyui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "daisyui": "^3.9.4",
+    "magicmouse.js": "^1.2.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  }
+}
