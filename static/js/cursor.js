@@ -3,7 +3,7 @@
  * 
  * This script implements a custom cursor with various effects based on
  * the cursor-rules.md guidelines. It includes:
- * - Basic cursor tracking
+ * - Basic cursor tracking with smooth movement
  * - Hover effects for interactive elements
  * - Magnetic effect for buttons
  * - Click animations
@@ -61,6 +61,9 @@ function initCursor() {
         return;
     }
 
+    // Add cursor-active class to body
+    document.documentElement.classList.add('custom-cursor-active');
+
     // Set initial position to center of screen to avoid cursor jumping
     const initialX = window.innerWidth / 2;
     const initialY = window.innerHeight / 2;
@@ -87,7 +90,7 @@ function initCursor() {
     document.addEventListener('mouseleave', onMouseLeave);
 
     // Add hover listeners to all interactive elements
-    const hoverTargets = document.querySelectorAll('.hover-target');
+    const hoverTargets = document.querySelectorAll('a, button, .hover-target, input, textarea, select, [role="button"]');
     hoverTargets.forEach(target => {
         target.addEventListener('mouseenter', () => onMouseEnter(target));
         target.addEventListener('mouseleave', onMouseLeave);
@@ -179,7 +182,7 @@ function onMouseLeave() {
         cursorOutline.classList.remove('hover');
         cursorOutline.style.width = `${CURSOR_SETTINGS.OUTLINE_SIZE}px`;
         cursorOutline.style.height = `${CURSOR_SETTINGS.OUTLINE_SIZE}px`;
-        cursorOutline.style.borderColor = 'rgba(79, 70, 229, 0.5)';
+        cursorOutline.style.borderColor = 'rgba(0, 102, 255, 0.5)';
     }
 }
 
