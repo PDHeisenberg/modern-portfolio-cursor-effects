@@ -1,134 +1,224 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<section class="py-16 md:py-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="order-2 md:order-1">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-dark mb-6 reveal-text">
-                Creative Developer & Designer
-            </h1>
-            <p class="text-lg text-dark-light mb-8 max-w-lg reveal-text-delay">
-                I craft beautiful, functional websites and digital experiences that blend creativity with technical precision.
-            </p>
-            <div class="flex flex-wrap gap-4 reveal-buttons">
-                <a href="/projects" class="btn btn-primary text-white px-8 py-3 rounded-lg hover-target">
-                    View Projects
-                </a>
-                <a href="/contact" class="btn btn-outline border-2 border-dark text-dark px-8 py-3 rounded-lg hover-target">
-                    Contact Me
-                </a>
+<div class="container mx-auto px-4 md:px-6">
+    <!-- Hero Section -->
+    <section class="hero-section py-16 md:py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-heading-lg md:text-heading-xl font-bold mb-6" data-animate="slide-up">
+                    Developer & Designer creating digital experiences
+                </h1>
+                <p class="text-text-secondary text-body-lg mb-8 max-w-lg" data-animate="slide-up">
+                    I'm Parth, a developer and designer focused on creating clean, user-friendly experiences that solve real problems.
+                </p>
+                <div class="flex flex-wrap gap-4" data-animate="slide-up">
+                    <a href="/projects" class="btn btn-primary hover-target">
+                        View Projects
+                    </a>
+                    <a href="/contact" class="btn btn-outline hover-target">
+                        Contact Me
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="order-1 md:order-2 reveal-image">
-            <div class="relative">
-                <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full animate-pulse-slow"></div>
-                <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-secondary/10 rounded-full animate-pulse-slow"></div>
-                <div class="relative z-10 bg-light-accent p-4 rounded-2xl shadow-sm">
-                    <img src="{{ url_for('static', filename='img/hero-image.jpg') }}" alt="Developer working on code" class="rounded-xl w-full h-auto">
+            <div class="hero-image" data-animate="fade-in">
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-accent/10 rounded-full animate-pulse-slow"></div>
+                    <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-accent/10 rounded-full animate-pulse-slow"></div>
+                    <div class="relative z-10 bg-hover-bg p-4 rounded-2xl">
+                        <img src="{{ url_for('static', filename='img/hero-image.jpg') }}" alt="Parth Dhawan" class="rounded-xl w-full h-auto">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="py-16 bg-light-accent rounded-3xl my-16">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4 reveal-text">My Expertise</h2>
-        <p class="text-dark-light max-w-2xl mx-auto reveal-text-delay">Specialized skills and technologies I work with to bring your digital projects to life.</p>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-xl shadow-sm hover-card hover-target">
-            <div class="text-primary mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    <!-- About Section Preview -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+            <h2 class="text-heading-md font-bold mb-4 md:mb-0">About Me</h2>
+            <a href="/about" class="btn-text hover-target inline-flex items-center">
+                View Full Profile
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
-            </div>
-            <h3 class="text-xl font-display font-semibold text-dark mb-2">Web Development</h3>
-            <p class="text-dark-light">Creating responsive, performant websites with modern frameworks and clean code.</p>
+            </a>
         </div>
         
-        <div class="bg-white p-8 rounded-xl shadow-sm hover-card hover-target">
-            <div class="text-primary mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-            </div>
-            <h3 class="text-xl font-display font-semibold text-dark mb-2">UI/UX Design</h3>
-            <p class="text-dark-light">Designing intuitive interfaces and seamless user experiences that delight and engage.</p>
-        </div>
-        
-        <div class="bg-white p-8 rounded-xl shadow-sm hover-card hover-target">
-            <div class="text-primary mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-            </div>
-            <h3 class="text-xl font-display font-semibold text-dark mb-2">Interactive Experiences</h3>
-            <p class="text-dark-light">Building engaging animations and interactions that bring websites to life.</p>
-        </div>
-    </div>
-</section>
-
-<section class="py-16">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4 reveal-text">Featured Projects</h2>
-        <p class="text-dark-light max-w-2xl mx-auto reveal-text-delay">A selection of my recent work showcasing my skills and expertise.</p>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="group relative overflow-hidden rounded-xl hover-target project-card">
-            <img src="{{ url_for('static', filename='img/project-1.jpg') }}" alt="Project 1" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex flex-col justify-end p-6">
-                <h3 class="text-xl font-display font-semibold text-white mb-2">E-Commerce Platform</h3>
-                <p class="text-white/80 mb-4">A modern shopping experience with custom animations and intuitive UX.</p>
-                <a href="/projects" class="text-white font-medium inline-flex items-center hover:underline">
-                    View Project
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-animate="stagger-children">
+            <div class="card card-hover p-6">
+                <div class="text-accent mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                </a>
+                </div>
+                <h3 class="text-lg font-medium mb-2">Frontend Development</h3>
+                <p class="text-text-secondary">Building responsive, performant websites with modern frameworks and clean code.</p>
             </div>
+            
+            <div class="card card-hover p-6">
+                <div class="text-accent mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium mb-2">UI/UX Design</h3>
+                <p class="text-text-secondary">Designing intuitive interfaces and seamless user experiences that delight and engage.</p>
+            </div>
+            
+            <div class="card card-hover p-6">
+                <div class="text-accent mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium mb-2">Interactive Experiences</h3>
+                <p class="text-text-secondary">Building engaging animations and interactions that bring websites to life.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+            <h2 class="text-heading-md font-bold mb-4 md:mb-0">Featured Projects</h2>
+            <a href="/projects" class="btn-text hover-target inline-flex items-center">
+                View All Projects
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
         </div>
         
-        <div class="group relative overflow-hidden rounded-xl hover-target project-card">
-            <img src="{{ url_for('static', filename='img/project-2.jpg') }}" alt="Project 2" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex flex-col justify-end p-6">
-                <h3 class="text-xl font-display font-semibold text-white mb-2">Portfolio Website</h3>
-                <p class="text-white/80 mb-4">A creative portfolio with custom cursor effects and smooth transitions.</p>
-                <a href="/projects" class="text-white font-medium inline-flex items-center hover:underline">
-                    View Project
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-animate="stagger-children">
+            <!-- Project 1 -->
+            <div class="project-card overflow-hidden">
+                <div class="relative overflow-hidden">
+                    <img src="{{ url_for('static', filename='img/project-1.jpg') }}" alt="E-Commerce Platform" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">E-Commerce Platform</h3>
+                    <p class="text-text-secondary mb-4">A modern shopping experience with custom animations and intuitive UX.</p>
+                    <a href="/projects" class="btn-text hover-target inline-flex items-center">
+                        View Project
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card overflow-hidden">
+                <div class="relative overflow-hidden">
+                    <img src="{{ url_for('static', filename='img/project-2.jpg') }}" alt="Portfolio Website" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Anime.js</span>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">Portfolio Website</h3>
+                    <p class="text-text-secondary mb-4">A creative portfolio with custom cursor effects and smooth transitions.</p>
+                    <a href="/projects" class="btn-text hover-target inline-flex items-center">
+                        View Project
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="text-center mt-12">
-        <a href="/projects" class="btn btn-outline border-2 border-dark text-dark px-8 py-3 rounded-lg inline-block hover-target">
-            View All Projects
-        </a>
-    </div>
-</section>
+    </section>
 
-<section class="py-16 bg-light-accent rounded-3xl my-16">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4 reveal-text">Let's Work Together</h2>
-        <p class="text-dark-light max-w-2xl mx-auto reveal-text-delay">Have a project in mind? I'd love to help bring your vision to life.</p>
-    </div>
-    
-    <div class="flex justify-center">
-        <a href="/contact" class="btn btn-primary text-white px-8 py-3 rounded-lg hover-target">
-            Get in Touch
-        </a>
-    </div>
-</section>
+    <!-- Testimonials Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <h2 class="text-heading-md font-bold mb-12">What People Say</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-animate="stagger-children">
+            <div class="card card-hover p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                        <img src="{{ url_for('static', filename='img/testimonial-1.jpg') }}" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-medium">Sarah Johnson</h3>
+                        <p class="text-text-secondary text-sm">CEO, TechStart</p>
+                    </div>
+                </div>
+                <p class="text-text-secondary italic">"Parth delivered an exceptional website that perfectly captured our brand. His attention to detail and creative solutions exceeded our expectations."</p>
+            </div>
+            
+            <div class="card card-hover p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                        <img src="{{ url_for('static', filename='img/testimonial-2.jpg') }}" alt="Client" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-medium">Michael Chen</h3>
+                        <p class="text-text-secondary text-sm">Product Manager, InnovateCo</p>
+                    </div>
+                </div>
+                <p class="text-text-secondary italic">"Working with Parth was a pleasure. He understood our requirements quickly and delivered a product that was both beautiful and functional. Highly recommended!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="py-16 border-t border-border" data-animate="fade-in">
+        <div class="text-center max-w-3xl mx-auto">
+            <h2 class="text-heading-md font-bold mb-6">Let's Work Together</h2>
+            <p class="text-text-secondary text-body-lg mb-8">Have a project in mind? I'd love to help bring your vision to life. Let's create something amazing together.</p>
+            <a href="/contact" class="btn btn-primary hover-target">Get in Touch</a>
+        </div>
+    </section>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // Additional page-specific animations can be added here
+    document.addEventListener('DOMContentLoaded', () => {
+        // Additional page-specific animations
+        const heroHeading = document.querySelector('.hero-section h1');
+        const heroDescription = document.querySelector('.hero-section p');
+        const heroButtons = document.querySelector('.hero-section .flex');
+        const heroImage = document.querySelector('.hero-image');
+        
+        // Ensure elements exist before animating
+        if (heroHeading && heroDescription && heroButtons && heroImage) {
+            // Animate hero elements with staggered timing
+            anime.timeline({
+                easing: 'cubicBezier(0.19, 1, 0.22, 1)',
+                duration: 800
+            })
+            .add({
+                targets: heroHeading,
+                opacity: [0, 1],
+                translateY: [20, 0],
+            })
+            .add({
+                targets: heroDescription,
+                opacity: [0, 1],
+                translateY: [20, 0],
+            }, '-=600')
+            .add({
+                targets: heroButtons,
+                opacity: [0, 1],
+                translateY: [20, 0],
+            }, '-=600')
+            .add({
+                targets: heroImage,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                scale: [0.95, 1],
+            }, '-=600');
+        }
+    });
 </script>
 {% endblock %}
