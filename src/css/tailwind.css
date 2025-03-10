@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-dark font-sans;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Custom components */
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300 ease-in-out;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-white;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 hover:bg-light-accent;
+  }
+  
+  /* Loading animation */
+  .loading-animation {
+    @apply flex items-center justify-center space-x-2 py-4;
+  }
+  
+  .loading-circle {
+    @apply w-3 h-3 rounded-full bg-primary;
+  }
+  
+  /* Scroll animations */
+  .scroll-anim-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .scroll-anim-fade.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .scroll-anim-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .scroll-anim-scale.animated {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
+
+/* Custom cursor styles */
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: theme('colors.primary');
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid rgba(79, 70, 229, 0.5);
+  transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out, border 0.2s ease-out;
+}
+
+.cursor-outline.hover {
+  width: 60px;
+  height: 60px;
+  border-width: 2px;
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+/* Hide cursors on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+}
