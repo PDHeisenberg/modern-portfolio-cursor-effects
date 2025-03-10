@@ -3,159 +3,96 @@
  * 
  * This script implements various animations for the portfolio website
  * using anime.js. It includes:
- * - Reveal animations for text and elements
- * - Hover animations for cards and buttons
+ * - Page transition animations
  * - Scroll-triggered animations
+ * - Hover animations
  * - Loading animations
  */
 
 // Constants for animations
 const ANIMATION_SETTINGS = {
-    REVEAL_DURATION: 800,       // Duration of reveal animations in milliseconds
-    REVEAL_DELAY_INCREMENT: 100, // Delay increment for staggered animations
-    HOVER_DURATION: 300,        // Duration of hover animations
-    SCROLL_THRESHOLD: 0.2,      // Threshold for scroll animations (0-1)
+    DURATION: {
+        FAST: 400,
+        MEDIUM: 600,
+        SLOW: 800
+    },
+    EASING: {
+        IN_OUT: 'cubicBezier(0.4, 0, 0.2, 1)',
+        OUT: 'cubicBezier(0.0, 0, 0.2, 1)',
+        OUT_EXPO: 'cubicBezier(0.19, 1, 0.22, 1)'
+    },
+    DELAY: {
+        STAGGER: 50,
+        INITIAL: 100
+    }
 };
 
 // DOM elements to animate
-let revealTextElements;
-let revealTextDelayElements;
-let revealImageElements;
-let revealButtonElements;
-let hoverCardElements;
-let projectCardElements;
+let animatedElements;
+let projectCards;
+let navLinks;
+let heroSection;
 
 /**
  * Initialize animations when DOM is loaded
  */
 document.addEventListener('DOMContentLoaded', () => {
     // Get all elements to animate
-    revealTextElements = document.querySelectorAll('.reveal-text');
-    revealTextDelayElements = document.querySelectorAll('.reveal-text-delay');
-    revealImageElements = document.querySelectorAll('.reveal-image');
-    revealButtonElements = document.querySelectorAll('.reveal-buttons');
-    hoverCardElements = document.querySelectorAll('.hover-card');
-    projectCardElements = document.querySelectorAll('.project-card');
+    animatedElements = document.querySelectorAll('[data-animate]');
+    projectCards = document.querySelectorAll('.project-card');
+    navLinks = document.querySelectorAll('.nav-link');
+    heroSection = document.querySelector('.hero-section');
     
     // Initialize animations
-    initRevealAnimations();
-    initHoverAnimations();
+    initPageTransitions();
     initScrollAnimations();
+    initHoverAnimations();
     
     // Show page after animations are set up
     document.body.classList.add('loaded');
+    
+    // Animate hero section elements on page load
+    if (heroSection) {
+        animateHeroSection();
+    }
 });
 
 /**
- * Initialize reveal animations for page load
+ * Initialize page transition animations
  */
-function initRevealAnimations() {
-    // Animate text elements
-    anime({
-        targets: revealTextElements,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        easing: 'easeOutExpo',
-        duration: ANIMATION_SETTINGS.REVEAL_DURATION,
-        delay: (el, i) => i * ANIMATION_SETTINGS.REVEAL_DELAY_INCREMENT
-    });
-    
-    // Animate delayed text elements
-    anime({
-        targets: revealTextDelayElements,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        easing: 'easeOutExpo',
-        duration: ANIMATION_SETTINGS.REVEAL_DURATION,
-        delay: (el, i) => 300 + i * ANIMATION_SETTINGS.REVEAL_DELAY_INCREMENT
-    });
-    
-    // Animate image elements
-    anime({
-        targets: revealImageElements,
-        opacity: [0, 1],
-        translateY: [30, 0],
-        scale: [0.95, 1],
-        easing: 'easeOutExpo',
-        duration: ANIMATION_SETTINGS.REVEAL_DURATION,
-        delay: 200
-    });
-    
-    // Animate button elements
-    anime({
-        targets: revealButtonElements,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        easing: 'easeOutExpo',
-        duration: ANIMATION_SETTINGS.REVEAL_DURATION,
-        delay: 400
-    });
-}
-
-/**
- * Initialize hover animations for interactive elements
- */
-function initHoverAnimations() {
-    // Add hover animations to cards
-    hoverCardElements.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            anime({
-                targets: card,
-                translateY: -10,
-                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                duration: ANIMATION_SETTINGS.HOVER_DURATION,
-                easing: 'easeOutQuad'
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            anime({
-                targets: card,
-                translateY: 0,
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                duration: ANIMATION_SETTINGS.HOVER_DURATION,
-                easing: 'easeOutQuad'
-            });
+function initPageTransitions() {
+    // Handle internal link clicks for smooth page transitions
+    document.querySelectorAll('a[href^="/"]:not([target="_blank"])').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Only handle internal links
+            if (link.hostname === window.location.hostname) {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                
+                // Animate page out
+                anime({
+                    targets: 'main',
+                    opacity: [1, 0],
+                    translateY: [0, 20],
+                    easing: ANIMATION_SETTINGS.EASING.OUT,
+                    duration: ANIMATION_SETTINGS.DURATION.FAST,
+                    complete: () => {
+                        // Navigate to new page
+                        window.location.href = href;
+                    }
+                });
+            }
         });
     });
     
-    // Add hover animations to project cards
-    projectCardElements.forEach(card => {
-        const image = card.querySelector('img');
-        const content = card.querySelector('.absolute');
-        
-        card.addEventListener('mouseenter', () => {
-            anime({
-                targets: image,
-                scale: 1.05,
-                duration: ANIMATION_SETTINGS.HOVER_DURATION * 1.5,
-                easing: 'easeOutQuad'
-            });
-            
-            anime({
-                targets: content,
-                translateY: -10,
-                opacity: [0.9, 1],
-                duration: ANIMATION_SETTINGS.HOVER_DURATION,
-                easing: 'easeOutQuad'
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            anime({
-                targets: image,
-                scale: 1,
-                duration: ANIMATION_SETTINGS.HOVER_DURATION * 1.5,
-                easing: 'easeOutQuad'
-            });
-            
-            anime({
-                targets: content,
-                translateY: 0,
-                opacity: 0.9,
-                duration: ANIMATION_SETTINGS.HOVER_DURATION,
-                easing: 'easeOutQuad'
-            });
+    // Animate page in on load
+    window.addEventListener('load', () => {
+        anime({
+            targets: 'main',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: ANIMATION_SETTINGS.EASING.OUT,
+            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
         });
     });
 }
@@ -164,29 +101,203 @@ function initHoverAnimations() {
  * Initialize scroll-triggered animations
  */
 function initScrollAnimations() {
-    // Get all elements to animate on scroll
-    const scrollAnimElements = document.querySelectorAll('[class*="scroll-anim"]');
-    
     // Create an Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add class to trigger animation
-                entry.target.classList.add('animated');
+                const element = entry.target;
+                const animationType = element.getAttribute('data-animate');
+                
+                // Apply different animations based on data-animate attribute
+                switch (animationType) {
+                    case 'fade-in':
+                        anime({
+                            targets: element,
+                            opacity: [0, 1],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
+                        });
+                        break;
+                    case 'slide-up':
+                        anime({
+                            targets: element,
+                            opacity: [0, 1],
+                            translateY: [20, 0],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
+                        });
+                        break;
+                    case 'slide-right':
+                        anime({
+                            targets: element,
+                            opacity: [0, 1],
+                            translateX: [-20, 0],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
+                        });
+                        break;
+                    case 'slide-left':
+                        anime({
+                            targets: element,
+                            opacity: [0, 1],
+                            translateX: [20, 0],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
+                        });
+                        break;
+                    case 'scale-in':
+                        anime({
+                            targets: element,
+                            opacity: [0, 1],
+                            scale: [0.9, 1],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
+                        });
+                        break;
+                    case 'stagger-children':
+                        anime({
+                            targets: element.children,
+                            opacity: [0, 1],
+                            translateY: [20, 0],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM,
+                            delay: anime.stagger(ANIMATION_SETTINGS.DELAY.STAGGER)
+                        });
+                        break;
+                    default:
+                        // Default animation
+                        anime({
+                            targets: element,
+                            opacity: [0, 1],
+                            easing: ANIMATION_SETTINGS.EASING.OUT,
+                            duration: ANIMATION_SETTINGS.DURATION.MEDIUM
+                        });
+                }
+                
                 // Unobserve after animation is triggered
-                observer.unobserve(entry.target);
+                observer.unobserve(element);
             }
         });
     }, {
-        root: null,
-        threshold: ANIMATION_SETTINGS.SCROLL_THRESHOLD,
-        rootMargin: '0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
     });
     
-    // Observe all elements
-    scrollAnimElements.forEach(element => {
+    // Observe all animated elements
+    animatedElements.forEach(element => {
         observer.observe(element);
     });
+}
+
+/**
+ * Initialize hover animations
+ */
+function initHoverAnimations() {
+    // Project card hover animations
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            anime({
+                targets: card,
+                translateY: -5,
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                borderColor: 'rgba(0, 102, 255, 0.3)',
+                easing: ANIMATION_SETTINGS.EASING.OUT,
+                duration: ANIMATION_SETTINGS.DURATION.FAST
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            anime({
+                targets: card,
+                translateY: 0,
+                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+                borderColor: 'rgba(238, 238, 238, 1)',
+                easing: ANIMATION_SETTINGS.EASING.OUT,
+                duration: ANIMATION_SETTINGS.DURATION.FAST
+            });
+        });
+    });
+    
+    // Navigation link hover animations
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            anime({
+                targets: link,
+                color: '#000000',
+                easing: ANIMATION_SETTINGS.EASING.OUT,
+                duration: ANIMATION_SETTINGS.DURATION.FAST
+            });
+        });
+        
+        link.addEventListener('mouseleave', () => {
+            if (!link.classList.contains('nav-link-active')) {
+                anime({
+                    targets: link,
+                    color: '#666666',
+                    easing: ANIMATION_SETTINGS.EASING.OUT,
+                    duration: ANIMATION_SETTINGS.DURATION.FAST
+                });
+            }
+        });
+    });
+}
+
+/**
+ * Animate hero section elements
+ */
+function animateHeroSection() {
+    // Animate hero heading
+    const heroHeading = heroSection.querySelector('h1');
+    if (heroHeading) {
+        anime({
+            targets: heroHeading,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: ANIMATION_SETTINGS.EASING.OUT_EXPO,
+            duration: ANIMATION_SETTINGS.DURATION.MEDIUM,
+            delay: ANIMATION_SETTINGS.DELAY.INITIAL
+        });
+    }
+    
+    // Animate hero description
+    const heroDescription = heroSection.querySelector('p');
+    if (heroDescription) {
+        anime({
+            targets: heroDescription,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: ANIMATION_SETTINGS.EASING.OUT_EXPO,
+            duration: ANIMATION_SETTINGS.DURATION.MEDIUM,
+            delay: ANIMATION_SETTINGS.DELAY.INITIAL + 100
+        });
+    }
+    
+    // Animate hero buttons
+    const heroButtons = heroSection.querySelectorAll('.btn');
+    if (heroButtons.length) {
+        anime({
+            targets: heroButtons,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: ANIMATION_SETTINGS.EASING.OUT_EXPO,
+            duration: ANIMATION_SETTINGS.DURATION.MEDIUM,
+            delay: anime.stagger(100, {start: ANIMATION_SETTINGS.DELAY.INITIAL + 200})
+        });
+    }
+    
+    // Animate hero image
+    const heroImage = heroSection.querySelector('.hero-image');
+    if (heroImage) {
+        anime({
+            targets: heroImage,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            scale: [0.95, 1],
+            easing: ANIMATION_SETTINGS.EASING.OUT_EXPO,
+            duration: ANIMATION_SETTINGS.DURATION.SLOW,
+            delay: ANIMATION_SETTINGS.DELAY.INITIAL + 300
+        });
+    }
 }
 
 /**
