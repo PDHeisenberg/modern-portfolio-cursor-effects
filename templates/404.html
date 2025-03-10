@@ -1,25 +1,26 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<section class="py-16 md:py-24 flex flex-col items-center justify-center text-center">
-    <div class="max-w-3xl mx-auto">
-        <h1 class="text-6xl md:text-8xl font-display font-bold text-primary mb-6 reveal-text">404</h1>
-        <h2 class="text-2xl md:text-3xl font-display font-semibold text-dark mb-6 reveal-text-delay">Page Not Found</h2>
-        <p class="text-lg text-dark-light mb-8 reveal-text-delay">
-            The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div class="reveal-buttons">
-            <a href="/" class="btn btn-primary text-white px-8 py-3 rounded-lg hover-target">
-                Back to Home
-            </a>
+<div class="container mx-auto px-4 md:px-6">
+    <section class="py-16 md:py-24 flex flex-col items-center justify-center text-center">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-heading-xl font-bold text-accent mb-6 animate-fade-in">404</h1>
+            <h2 class="text-heading-md font-bold text-text-primary mb-6 animate-slide-up">Page Not Found</h2>
+            <p class="text-text-secondary text-body-lg mb-8 animate-slide-up-delay-1">
+                The page you're looking for doesn't exist or has been moved.
+            </p>
+            <div class="animate-slide-up-delay-2">
+                <a href="/" class="btn btn-primary hover-target">
+                    Back to Home
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // Add custom 404 page animations
     document.addEventListener('DOMContentLoaded', () => {
         // Animate the 404 number with a glitch effect
         const errorNumber = document.querySelector('h1');
@@ -28,7 +29,7 @@
             // Create glitch animation
             setInterval(() => {
                 errorNumber.style.textShadow = `
-                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px rgba(79, 70, 229, 0.3),
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px rgba(0, 102, 255, 0.3),
                     ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px rgba(139, 92, 246, 0.3)
                 `;
                 
